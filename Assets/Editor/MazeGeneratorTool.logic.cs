@@ -24,12 +24,14 @@ public enum EWallType
     VISITED = 128, //1000 0000
 }
 
+//CELL COORDINATES IN THE GRID
 public struct MazeCell
 {
     public int X;
     public int Y;
 }
 
+//VISITED NEIGHBOURS FOR BACKTRACKING ANALYSIS
 public struct Neighbour
 {
     public MazeCell mazeCell;
@@ -52,7 +54,7 @@ public partial class MazeGeneratorTool : EditorWindow
 
     #region BackTrack Algorithm
 
-    /// <summary> Check the opposite walls from a wall </summary>
+    /// <summary> Check the opposite walls from a wall - O(1) </summary>
     /// <param name='wall'> the wall to check if there is an opposite </param>
     EWallType GetOpposite(EWallType wall)
     {
@@ -66,7 +68,7 @@ public partial class MazeGeneratorTool : EditorWindow
         }
     }
 
-    /// <summary> The backtracker algorithm to clean walls in the generated grid maze </summary>
+    /// <summary> The backtracker algorithm to clean walls in the generated grid maze - O(n) </summary>
     /// <param name='EWallType[,]'> the 2Dmatrix grid - base for the maze </param>
     /// <param name='column'> number of columns in the grid </param>
     /// <param name='row'> number of rows in the grid </param>
@@ -107,7 +109,7 @@ public partial class MazeGeneratorTool : EditorWindow
         return maze;
     }
 
-    /// <summary> Check for unvisited cells in the 2D matrix </summary>
+    /// <summary> Check for unvisited cells in the 2D matrix - O(1) </summary>
     /// <param name='cell'> the cell to be checked </param>
     /// <param name='maze'> the grid where the cell is located  </param>
     /// <param name='column'> number of columns in the grid </param>
@@ -186,7 +188,7 @@ public partial class MazeGeneratorTool : EditorWindow
     #endregion
 
     #region Maze Generation
-    /// <summary> Generate a 2D Matrix grid to be used as base for the maze </summary>
+    /// <summary> Generate a 2D Matrix grid to be used as base for the maze - O(n^2)</summary>
     /// <param name='column'> number of columns in the 2D matrix </param>
     /// <param name='row'> number of rows in the 2D matrix </param>
     /// <returns>A 2D matrix grid for the maze to be build NORTHon</returns>
@@ -204,7 +206,7 @@ public partial class MazeGeneratorTool : EditorWindow
         return RunBackTracker(maze, column, row);
     }
 
-    /// <summary>Method to draw the generated maze</summary>
+    /// <summary>Method to draw the generated maze - O(n^2)</summary>
     /// <param name='maze'> The maze generated in the Build Method</param>
     void DrawMaze(EWallType[,] maze)
     {
