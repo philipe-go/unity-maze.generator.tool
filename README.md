@@ -36,6 +36,6 @@ EWallType[,] GenerateMaze(int column, int row)
 void DrawMaze(EWallType[,] maze)
 ```
 
-## Section 4: Concept *[Wikipedia](https://en.wikipedia.org/wiki/Backtracking)*
+## Section 4: Concept *[GeeksForGeeks](https://www.geeksforgeeks.org/backtracking-algorithms/)*
 
-"Backtracking is an important tool for solving constraint satisfaction problems,[2] such as crosswords, verbal arithmetic, Sudoku, and many other puzzles. It is often the most convenient (if not the most efficient[citation needed]) technique for parsing,[3] for the knapsack problem and other combinatorial optimization problems. It is also the basis of the so-called logic programming languages such as Icon, Planner and Prolog."
+"This is better than naive approach (generating all possible combinations of digits and then trying every combination one by one) as it drops a set of permutations whenever it backtracks."
