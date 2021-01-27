@@ -17,21 +17,24 @@ A Unity Tool created to generate mazes based on a list of prefabs (floors and wa
 
 #### O(1):
 
- - EWallType GetOpposite(EWallType wall)
-
- - List<Neighbour> GetUnvisitedCells(MazeCell cell, EWallType[,] maze, int column, int row)
-
+```csharp
+EWallType GetOpposite(EWallType wall)
+```
+```csharp
+List<Neighbour> GetUnvisitedCells(MazeCell cell, EWallType[,] maze, int column, int row)
+```
 
 #### O(N):
-
-- EWallType[,] RunBackTracker(EWallType[,] maze, int column, int row)
-
+```csharp
+EWallType[,] RunBackTracker(EWallType[,] maze, int column, int row)
+```
 #### O(N^2):
-
-- EWallType[,] GenerateMaze(int column, int row)
-
-- void DrawMaze(EWallType[,] maze)
-
+```csharp
+EWallType[,] GenerateMaze(int column, int row)
+```
+```csharp
+void DrawMaze(EWallType[,] maze)
+```
 
 ## Section 4: Concept *[Wikipedia](https://en.wikipedia.org/wiki/Backtracking)*
 
