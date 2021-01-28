@@ -44,8 +44,10 @@ public partial class MazeGeneratorTool : EditorWindow
     int column = 10;
     int row = 10;
 
-    GameObject Wall;
-    GameObject Floor;
+    int wallArraySize = 0;
+    int floorArraySize = 0;
+    GameObject[] Wall;
+    GameObject[] Floor;
 
     GameObject generatedMaze;
 
@@ -214,6 +216,7 @@ public partial class MazeGeneratorTool : EditorWindow
         generatedMaze = new GameObject("Maze");
         Vector3 position = new Vector3();
         EWallType cell = new EWallType();
+        System.Random random = new System.Random();
 
         for (int i = 0; i < column; ++i)
         {
@@ -225,14 +228,14 @@ public partial class MazeGeneratorTool : EditorWindow
                 //TODO Change to instantiate random prefabs from a list of walls / floors
                 if (cell.HasFlag(EWallType.NORTH))
                 {
-                    GameObject northWall = Instantiate(Wall, generatedMaze.transform, true);
+                    GameObject northWall = Instantiate(Wall[random.Next(0,Wall.Length)], generatedMaze.transform, true);
                     northWall.name = $"column:{i} / row:{j}";
                     northWall.transform.position = position + new Vector3(GRIDSIZE / 2, GRIDSIZE / 2, 0);
                     // topWall.transform.localScale = new Vector3(GRIDSIZE, topWall.transform.localScale.y, topWall.transform.localScale.z);
                 }
                 if (cell.HasFlag(EWallType.WEST))
                 {
-                    GameObject westWall = Instantiate(Wall, generatedMaze.transform);
+                    GameObject westWall = Instantiate(Wall[random.Next(0,Wall.Length)], generatedMaze.transform);
                     westWall.name = $"column:{i} / row:{j}";
                     westWall.transform.position = position + new Vector3(0, GRIDSIZE / 2, GRIDSIZE / 2);
                     westWall.transform.eulerAngles = new Vector3(90, 0, 0);
@@ -243,7 +246,7 @@ public partial class MazeGeneratorTool : EditorWindow
                 {
                     if (cell.HasFlag(EWallType.EAST))
                     {
-                        GameObject eastWall = Instantiate(Wall, generatedMaze.transform);
+                        GameObject eastWall = Instantiate(Wall[random.Next(0,Wall.Length)], generatedMaze.transform);
                         eastWall.name = $"column:{i} / row:{j}";
                         eastWall.transform.position = position + new Vector3(0, GRIDSIZE / 2, -GRIDSIZE / 2);
                         eastWall.transform.eulerAngles = new Vector3(90, 0, 0);
@@ -254,14 +257,14 @@ public partial class MazeGeneratorTool : EditorWindow
                 {
                     if (cell.HasFlag(EWallType.SOUTH))
                     {
-                        GameObject southWall = Instantiate(Wall, generatedMaze.transform);
+                        GameObject southWall = Instantiate(Wall[random.Next(0,Wall.Length)], generatedMaze.transform);
                         southWall.name = $"column:{i} / row:{j}";
                         southWall.transform.position = position + new Vector3(-GRIDSIZE / 2, GRIDSIZE / 2, 0);
                     }
                 }
 
 
-                GameObject cellFloor = Instantiate(Floor, generatedMaze.transform);
+                GameObject cellFloor = Instantiate(Floor[random.Next(0,Floor.Length)], generatedMaze.transform);
                 cellFloor.transform.position = position;
             }
 
